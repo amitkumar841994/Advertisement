@@ -8,7 +8,7 @@ FacebookAdsApi.init(settings.FACEBOOK_APP_ID, settings.FACEBOOK_APP_SECRET, sett
 
 class FacebookService:
     def __init__(self, ad_account_id):
-        self.ad_account = AdAccount(ad_account_id)
+        self.ad_account = AdAccount(f'act_{ad_account_id}')
 
     def get_campaigns(self):
         campaigns = self.ad_account.get_campaigns(fields=[Campaign.Field.id, Campaign.Field.name])

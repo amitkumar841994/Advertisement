@@ -83,8 +83,7 @@ DATABASES = {
 
 FACEBOOK_APP_ID = 1134056084524116
 FACEBOOK_APP_SECRET = '836fc621c8caa7c45e74fa0643cc110d'
-FACEBOOK_ACCESS_TOKEN = 'EAAQHawISzFQBO4KQpHh7GjrQylVumnr6WfNKgHy4fbgkkYvvXEFDoU1q1SUsy5iBoy7Jz19q81djpkRNqmfOaMV5gBEZCehg0mjDEkLx25FxlnUAnlv0vVu366UWuQ0MiTDCnQZAZASjKYyXTR0106VCrsuAWqTTCoXXCwC6ssoZA7rkOHzyGoFq8aRv20ft4Y126SdR'
-
+FACEBOOK_ACCESS_TOKEN = 'EAAQHawISzFQBO1hbk0yoBwtqByZCTnwjEqC49pqZCQU3kk1ejjqpy1RKl9TfWfie8nPEz6ZCG58oBDBPLJQgwYbWLSbSePRbpRH9Vqo3pFcHJYYgDD8ZCcERV4s7KeWJ5ydYFSZBMB29YaW2uSQpZCeD6uT2oslloqZCEbTHkm1UBWXWMNA45IRD07bAR5qhqsCORw7SOVQnGvZCW5nBcgZDZD'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -126,3 +125,23 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
