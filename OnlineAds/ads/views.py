@@ -19,7 +19,12 @@ def list_campaigns(request):
 def create_campaign(request):
     service = FacebookService('your_ad_account_id')
     try:
-        campaign = service.create_campaign(name='Test Campaign', objective='LINK_CLICKS', status='PAUSED')
+        campaign = service.create_campaign(
+            name='Test Campaign', 
+            objective='OUTCOME_LEADS', 
+            status='PAUSED', 
+            special_ad_categories=['NONE']
+        )
         return JsonResponse({'id': campaign['id'], 'name': campaign['name']})
     except Exception as e:
         logger.error(f"Error creating campaign: {e}")
