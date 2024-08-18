@@ -39,27 +39,30 @@ import logging
 logger = logging.getLogger(__name__)
 
 def create_facebook_ad(request):
-    service = FacebookService('YOUR_AD_ACCOUNT_ID')  # Replace with actual ad account ID
+    service = FacebookService('1335327667871874')  # Replace with actual ad account ID
     try:
         campaign = service.create_campaign(
-            name='Test Campaign', 
+            name='Testing_dEMO', 
             objective='OUTCOME_LEADS', 
             status='PAUSED', 
             special_ad_categories=['NONE']
         )
+        print(">>>>>>",campaign)
         ad_set = service.create_ad_set(
             campaign_id=campaign['id'],
-            name='Test Ad Set',
-            daily_budget=1000,
-            start_time='2024-08-06T00:00:00-0700',
-            end_time='2024-08-13T00:00:00-0700',
-            targeting={'geo_locations': {'countries': ['INDIA']}}
+            name='Test_Ad_Set_DEMO',
+            daily_budget=70000,
+            start_time='2024-08-16T00:00:00-0700',
+            end_time='2024-08-17T23:59:59-0700',
+            targeting={'geo_locations': {'countries': ['IN']}}
         )
         ad_creative = service.create_ad_creative(
-            page_id='YOUR_PAGE_ID',  # Replace with your Facebook Page ID
-            title='Test Ad',
+            page_id='390596460797713',  # Replace with your Facebook PaIDge 
+            title='THIS DEMO Ad',
             body='This is a test ad',
-            link='https://www.example.com'
+            link='https://www.example.com',
+            enroll_status='NOT_ENROLLED'
+           
         )
         ad = service.create_ad(
             ad_set_id=ad_set['id'],

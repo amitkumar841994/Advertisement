@@ -67,14 +67,16 @@ class FacebookService:
         ad_set.remote_create()
         return ad_set
 
-    def create_ad_creative(self, page_id, title, body, link):
+    def create_ad_creative(self, page_id, title, body, link,enroll_status):
         creative = AdCreative(parent_id=self.ad_account.get_id_assured())
         creative[AdCreative.Field.name] = title
+        creative[AdCreative.Field.name]=enroll_status
         creative[AdCreative.Field.object_story_spec] = {
             'page_id': page_id,
+            
             'link_data': {
                 'call_to_action': {
-                    'type': 'LINK_CLICK',
+                    'type': 'INTERESTED',
                     'value': {
                         'link': link
                     }
@@ -83,7 +85,9 @@ class FacebookService:
                 'message': body,
                 'name': title,
             },
-        }
+            
+        },
+ 
         creative.remote_create()
         return creative
 
@@ -98,4 +102,5 @@ class FacebookService:
             Ad.Field.status: Ad.Status.active,
         })
         ad.remote_create()
+        print(">>>>>>>>>>>>>",ad)
         return ad
